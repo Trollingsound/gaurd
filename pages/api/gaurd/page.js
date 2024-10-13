@@ -16,6 +16,9 @@ export default async function handler(req, res) {
         redirect: "follow",
     };
 
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('Keep-Alive', 'timeout=20'); 
+
     if (proxy) {
         fetchOptions.agent = new HttpsProxyAgent(`http://${proxy}`);
     }
